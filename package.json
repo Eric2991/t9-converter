@@ -2,7 +2,7 @@
   "name": "t9-converter",
   "version": "1.0.0",
   "description": "For the sole submission and review for the Kiwi.com practical task.",
-  "main": "lib/index.js",
+  "main": "dist/index.js",
   "repository": "https://github.com/Eric2991/t9-converter",
   "author": "Eric Yamane",
   "license": "MIT",
@@ -12,7 +12,7 @@
     "flow-bin": "^0.80.0"
   },
   "scripts": {
-    "build": "babel src/ -d lib/",
+    "build": "babel src/ -d dist/",
     "prepublish": "yarn run build"
   }
 }

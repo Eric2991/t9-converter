@@ -1,7 +1,7 @@
 // @flow
 import type { Node } from './dictionary_creator.js'
-const dictUtils = require('./dictionary_creator.js')
-const dictionaryPromise = dictUtils.dictionaryPromise
+const dictLib = require('./dictionary_creator.js')
+const dictionaryPromise = dictLib.dictionaryPromise
 
 class Queue {
   data: Array<QueueItem>
@@ -87,3 +87,5 @@ async function retrieveWords(input: string) {
 
   return result
 }
+
+module.exports = {retrieveWords}

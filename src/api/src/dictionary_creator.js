@@ -62,6 +62,4 @@ const createDictionary = (): Promise<Node> => {
   })
 }
 
-const dictionaryPromise = createDictionary()
-
-module.exports = {dictionaryPromise}
+module.exports = {dictionaryPromise: createDictionary()}

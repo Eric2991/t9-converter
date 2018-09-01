@@ -1,4 +1,4 @@
-const api = require(`${process.cwd()}/dist/api/src/api.js`)
+const api = require(`${process.cwd()}/dist/api/src/index.js`)
 const express = require('express')
 const app = express()
 

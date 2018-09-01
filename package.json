@@ -8,14 +8,19 @@
   "license": "MIT",
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
     "babel-preset-flow": "^6.23.0",
+    "babel-preset-react": "^6.24.1",
     "flow-bin": "^0.80.0"
   },
   "scripts": {
     "build": "babel src/ -d dist/",
+    "build-watch": "babel src/ --watch -d dist/",
     "prepublish": "yarn run build"
   },
   "dependencies": {
-    "express": "^4.16.3"
+    "express": "^4.16.3",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2"
   }
 }

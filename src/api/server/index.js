@@ -6,4 +6,4 @@ app.get('/convert/:digits', (req, res) => {
   api.retrieveWords(req.params.digits).then(response => res.send(response))
 })
 
-app.listen(3000, () => console.log('Example app listening on port 3000!'))
+app.listen(3000)

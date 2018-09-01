@@ -46,7 +46,7 @@ const createDictionary = (): Promise<Node> => {
   const fs = require('fs');
 
   const rl = readline.createInterface({
-    input: fs.createReadStream('dist/api/lib/dictionary.txt')
+    input: fs.createReadStream('assets/dictionary.txt')
   });
 
   const dictionary = createNode()

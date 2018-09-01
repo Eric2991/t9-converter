@@ -14,5 +14,8 @@
   "scripts": {
     "build": "babel src/ -d dist/",
     "prepublish": "yarn run build"
+  },
+  "dependencies": {
+    "express": "^4.16.3"
   }
 }

@@ -10,6 +10,8 @@
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-flow": "^6.23.0",
     "babel-preset-react": "^6.24.1",
@@ -28,7 +30,7 @@
   "scripts": {
     "build": "webpack --mode development",
     "build-watch": "webpack --watch --mode development",
-    "postinstall": "yarn run flow-typed",
+    "postinstall": "cd src/ && flow-typed install; cd ..",
     "start": "webpack-dev-server --hot --mode development"
   },
   "dependencies": {

@@ -12,7 +12,7 @@ module.exports = {
         test: /\.(js|jsx)$/,
         exclude: /(node_modules)/,
         loader: 'babel-loader',
-        options: { presets: ['env', 'flow'] }
+        options: { presets: ['env', 'flow'], plugins: ["transform-class-properties"] }
       },
       {
         test: /\.scss$/,

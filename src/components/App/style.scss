@@ -1,7 +1,10 @@
+$FontColor: #454d54;
+
 html {
   font-family: 'Roboto', 'Helvetica Neue', sans-serif;
 }
 
 header {
+  color: $FontColor;
   text-align: center;
 }

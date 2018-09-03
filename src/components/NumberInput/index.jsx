@@ -124,7 +124,7 @@ const mapStateToProps = (state: { converter: ConverterState }) => ({
   loading: state.converter.loading
 })
 
-const mapDispatchToProps = (dispatch: Dispatch<*>) => ({
+const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
   convert: (input: string) => dispatch(requestConversion(input))
 })
 

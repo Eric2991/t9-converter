@@ -1,6 +1,5 @@
-// @flow
-
-// Create Trie of Words!!
+const readline = require('readline')
+const fs = require('fs')
 
 export type Node = {
   children: Map<string, Node>,
@@ -45,16 +44,13 @@ const createEntry = (dictionary: Node, word: string) => {
 }
 
 const createDictionary = (): Promise<Node> => {
-  const readline = require('readline')
-  const fs = require('fs')
-
   const rl = readline.createInterface({
     input: fs.createReadStream('assets/dictionary.txt')
   })
 
   const dictionary = createNode()
 
-  return new Promise((resolve, reject) => {
+  return new Promise(resolve => {
     rl.on('line', (word: string) => {
       createEntry(dictionary, word)
     })

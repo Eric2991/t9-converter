@@ -1,8 +1,11 @@
 // @flow
-import type { Node } from './dictionary_creator.js'
-const dictLib = require('./dictionary_creator.js')
-const dictionaryPromise = dictLib.dictionaryPromise
+import type { Node } from './dictionary_creator'
 
+const dictLib = require('./dictionary_creator')
+
+const { dictionaryPromise } = dictLib
+
+type QueueItem = [Node, string]
 class Queue {
   data: Array<QueueItem>
 
@@ -10,7 +13,7 @@ class Queue {
     this.data = []
   }
 
-  isEmpty() {
+  isEmpty(): boolean {
     return !this.data.length
   }
 
@@ -18,16 +21,14 @@ class Queue {
     this.data.unshift(item)
   }
 
-  pop() {
+  pop(): QueueItem {
     return this.data.pop()
   }
 
-  size() {
+  size(): number {
     return this.data.length
   }
 }
-
-type QueueItem = [Node, string]
 
 const createT9Map = (): Map<number, Array<string>> => {
   const result = new Map()
@@ -46,7 +47,7 @@ const createT9Map = (): Map<number, Array<string>> => {
 
 const T9_MAP: Map<number, Array<string>> = createT9Map()
 
-async function retrieveWords(input: string) {
+async function retrieveWords(input: string): Promise<Array<string>> {
   const result: Array<string> = []
   const queue: Queue = new Queue()
 
@@ -54,7 +55,7 @@ async function retrieveWords(input: string) {
     queue.push([dictionary, ''])
 
     for (let i = 0; !queue.isEmpty() && i < input.length; i++) {
-      const number = parseInt(input[i])
+      const number = parseInt(input[i], 10)
       const letters: Array<string> = T9_MAP.get(number) || []
 
       const queueSize = queue.size()
@@ -82,7 +83,7 @@ async function retrieveWords(input: string) {
     const node: Node = curr[0]
     const word: string = curr[1]
 
-    if (node.isWord) result.push(curr[1])
+    if (node.isWord) result.push(word)
   }
 
   return result

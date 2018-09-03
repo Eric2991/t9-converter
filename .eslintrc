@@ -9,6 +9,8 @@
     "flowtype"
   ],
   "rules": {
+    "no-cond-assign": [2, "except-parens"],
+    "no-plusplus": [2, {"allowForLoopAfterthoughts": true}],
     "react/no-array-index-key": 0,
     "react/prop-types": 0,
     "react/require-default-props": 0,
@@ -26,12 +28,12 @@
       "never"
     ],
     "flowtype/no-primitive-constructor-types": 2,
-    "flowtype/no-weak-types": 2,
+    "flowtype/no-weak-types": 1,
     "flowtype/object-type-delimiter": [
       2,
       "comma"
     ],
-    "flowtype/require-parameter-type": 2,
+    "flowtype/require-parameter-type": [2, {"excludeArrowFunctions": true}],
     "flowtype/require-return-type": [
       2,
       "always",

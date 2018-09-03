@@ -3,6 +3,7 @@ import { ACTION_TYPES } from '../shared/constants'
 
 const defaultState: ConverterState = {
   loading: false,
+  query: '',
   results: []
 }
 
@@ -15,6 +16,7 @@ const converter = (
       return {
         ...state,
         loading: true,
+        query: action.payload.query,
         results: []
       }
     case ACTION_TYPES.ASYNC_RESPONSE:

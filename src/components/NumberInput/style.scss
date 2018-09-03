@@ -1,6 +1,7 @@
 $NumberPadWidth: 300px;
 $NumberPadBackgroundColor: #00A991;
-$NumberPadActiveBackgroundColor: #008772;
+$NumberPadActiveBackgroundColor: darken($NumberPadBackgroundColor, 5%);
+$NumberPadHoverBackgroundColor: darken($NumberPadBackgroundColor, 3%);
 $NumberPadBorderColor: #E9EEF2;
 $NumberPadTextColor: #fff;
 $NumberPadActionButtonsBackgroundColor: #008E79;
@@ -15,13 +16,17 @@ $NumberPadActionButtonsBackgroundColor: #008E79;
   flex-direction: column;
   justify-content: center;
   padding: calc(#{$NumberPadWidth} / 12) 0;
+  transition: background-color 0.2s ease-in-out;
   z-index: 10;
 
-  &:active {
-    background-color: $NumberPadActiveBackgroundColor;
-  }
   &:focus {
     outline: none;
+  }
+  &:hover {
+    background-color: $NumberPadHoverBackgroundColor;
+  }
+  &:active {
+    background-color: $NumberPadActiveBackgroundColor;
   }
 }
 
@@ -73,10 +78,6 @@ $NumberPadActionButtonsBackgroundColor: #008E79;
 
       &:not(.actionButtons-submit) {
         background-color: $NumberPadActionButtonsBackgroundColor;
-
-        &:active {
-          background-color: $NumberPadActiveBackgroundColor;
-        }
       }
       &:not(:last-child) {
         border-right: 1px solid $NumberPadBorderColor;

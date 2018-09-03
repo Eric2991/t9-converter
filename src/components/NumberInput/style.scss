@@ -1,0 +1,86 @@
+.NumberPadButton {
+  align-items: center;
+  background-color: #00A991;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: calc(300px / 12) 0;
+  z-index: 10;
+
+  &:active {
+    background-color: #008772;
+  }
+  &:focus {
+    outline: none;
+  }
+}
+
+.NumberInput {
+  margin: 0 auto;
+  max-width: 300px;
+
+  .numberPad {
+    border: 1px solid #E9EEF2;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+  }
+  .numberPadRow {
+    display: flex;
+    justify-content: space-around;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid #E9EEF2;
+    }
+  }
+  .numberPadRowEntry {
+    @extend .NumberPadButton;
+
+    &:not(:last-child) {
+      border-right: 1px solid #E9EEF2;
+    }
+    .numberPadRowEntry-main {
+      font-size: 1.5rem;
+    }
+    .numberPadRowEntry-subtext {
+      font-size: .9rem;
+    }
+  }
+
+  .actionButtons {
+    border: solid #E9EEF2;
+    border-width: 0 1px 1px 1px;
+    display: flex;
+    margin: 0 auto;
+
+    .actionButtons-submit {
+      font-size: 1.25rem;
+    }
+    button {
+      @extend .NumberPadButton;
+      width: calc(100% / 3);
+
+      &:not(.actionButtons-submit) {
+        background-color: #008E79;
+
+        &:active {
+          background-color: #008772;
+        }
+      }
+      &:not(:last-child) {
+        border-right: 1px solid #E9EEF2;
+      }
+    }
+  }
+
+  .inputDisplay {
+    background-color: #E9EEF2;
+    overflow: hidden;
+    padding: 1rem .5rem;
+    text-align: center;
+    text-overflow: ellipsis;
+  }
+}

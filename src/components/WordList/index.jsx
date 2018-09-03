@@ -5,25 +5,24 @@ import './style.scss'
 
 type Props = {
   loading: boolean,
+  query: string,
   words: Array<string>
 }
 
-const defaultProps: Props = {
-  loading: false,
-  words: []
-}
-
-const WordList = (props: Props = defaultProps) => {
-  const { loading, words } = props
-  return loading ? (
-    <div>Loading!</div>
-  ) : (
-    <div>{words.length ? words.join(', ') : 'No words found :('}</div>
+const WordList = (props: Props) => {
+  const { loading, query, words } = props
+  const resultsMessage = words.length ? words.join(', ') : 'No words found :('
+  const message = query.length ? resultsMessage : null
+  return (
+    <div className="WordList">
+      {loading ? <div>Loading!</div> : <div>{message}</div>}
+    </div>
   )
 }
 
 const mapStateToProps = (state: { converter: ConverterState }) => ({
   loading: state.converter.loading,
+  query: state.converter.query,
   words: state.converter.results
 })
 

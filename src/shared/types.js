@@ -1,5 +1,6 @@
 export type ConverterState = {
   loading: boolean,
+  query: string,
   results: Array<string>
 }
 

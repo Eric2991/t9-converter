@@ -29,23 +29,27 @@ const renderPad = (
       const entryStyle = { width: `${(1 / rowSize) * 100}%` }
       return (
         <div key={i} className="numberPadRow">
-          {row.map((entry: NumberPadRowEntry, j: number) => (
-            <button
-              key={`${i}-${j}`}
-              className="numberPadRowEntry"
-              onClick={inputChangeCallback}
-              style={entryStyle}
-              type="button"
-              value={entry.number}
-            >
-              <div className="numberPadRowEntry-main">{entry.number}</div>
-              <div className="numberPadRowEntry-subtext">
-                {!isNaN(parseInt(entry.subtext, 10))
-                  ? String.fromCharCode(parseInt(entry.subtext, 10))
-                  : entry.subtext}
-              </div>
-            </button>
-          ))}
+          {row.map((entry: NumberPadRowEntry, j: number) => {
+            // Since we can pass in either textual subtext or an HTML Char code,
+            // we check to see if we should parse a char code
+            const subtext = !Number.isNaN(parseInt(entry.subtext, 10))
+              ? String.fromCharCode(parseInt(entry.subtext, 10))
+              : entry.subtext
+
+            return (
+              <button
+                key={`${i}-${j}`}
+                className="numberPadRowEntry"
+                onClick={inputChangeCallback}
+                style={entryStyle}
+                type="button"
+                value={entry.number}
+              >
+                <div className="numberPadRowEntry-main">{entry.number}</div>
+                <div className="numberPadRowEntry-subtext">{subtext}</div>
+              </button>
+            )
+          })}
         </div>
       )
     })}

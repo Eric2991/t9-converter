@@ -17,6 +17,7 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-flow": "^6.23.0",
     "babel-preset-react": "^6.24.1",
+    "concurrently": "^4.0.1",
     "css-loader": "^1.0.0",
     "empty": "^0.10.1",
     "eslint": "^5.5.0",
@@ -39,12 +40,16 @@
     "webpack-dev-server": "^3.1.7"
   },
   "scripts": {
-    "build": "webpack --mode development",
+    "build": "yarn run build-api && yarn run build-ui",
     "build-api": "babel src/api -d dist/api",
-    "build-watch": "yarn run build-api && webpack --watch --mode development",
-    "format": "prettier --write '**/*.{js,jsx}'",
+    "build-ui": "webpack",
+    "build-watch": "concurrently \"yarn run build-api --watch\" \"yarn run build-ui --watch\"",
+    "flow": "cd src && flow; cd ..",
+    "lint": "eslint src",
+    "lint-fix": "yarn run prettier --write; yarn run lint --fix",
+    "prettier": "prettier -l src/**/*.js",
     "postinstall": "cd src/ && flow-typed install; cd ..",
-    "start": "webpack-dev-server --hot --mode development"
+    "start": "node dist/api/server/index.js"
   },
   "dependencies": {
     "classnames": "^2.2.6",

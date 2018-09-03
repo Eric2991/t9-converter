@@ -112,7 +112,7 @@ class NumberInput extends React.Component<Props, State> {
             Submit
           </button>
           <button type="button" onClick={this.handleBackspace}>
-            Backspace
+            &#x232b;
           </button>
         </div>
       </div>

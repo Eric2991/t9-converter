@@ -14,7 +14,7 @@ $NumberPadActionButtonsBackgroundColor: #008E79;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: calc($NumberPadWidth / 12) 0;
+  padding: calc(#{$NumberPadWidth} / 12) 0;
   z-index: 10;
 
   &:active {

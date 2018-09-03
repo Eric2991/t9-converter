@@ -1,17 +1,24 @@
+$NumberPadWidth: 300px;
+$NumberPadBackgroundColor: #00A991;
+$NumberPadActiveBackgroundColor: #008772;
+$NumberPadBorderColor: #E9EEF2;
+$NumberPadTextColor: #fff;
+$NumberPadActionButtonsBackgroundColor: #008E79;
+
 .NumberPadButton {
   align-items: center;
-  background-color: #00A991;
+  background-color: $NumberPadBackgroundColor;
   border: none;
-  color: #fff;
+  color: $NumberPadTextColor;
   cursor: pointer;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: calc(300px / 12) 0;
+  padding: calc($NumberPadWidth / 12) 0;
   z-index: 10;
 
   &:active {
-    background-color: #008772;
+    background-color: $NumberPadActiveBackgroundColor;
   }
   &:focus {
     outline: none;
@@ -20,10 +27,10 @@
 
 .NumberInput {
   margin: 0 auto;
-  max-width: 300px;
+  max-width: $NumberPadWidth;
 
   .numberPad {
-    border: 1px solid #E9EEF2;
+    border: 1px solid $NumberPadBorderColor;
     display: flex;
     flex-direction: column;
     margin: 0 auto;
@@ -33,14 +40,14 @@
     justify-content: space-around;
 
     &:not(:last-child) {
-      border-bottom: 1px solid #E9EEF2;
+      border-bottom: 1px solid $NumberPadBorderColor;
     }
   }
   .numberPadRowEntry {
     @extend .NumberPadButton;
 
     &:not(:last-child) {
-      border-right: 1px solid #E9EEF2;
+      border-right: 1px solid $NumberPadBorderColor;
     }
     .numberPadRowEntry-main {
       font-size: 1.5rem;
@@ -51,7 +58,7 @@
   }
 
   .actionButtons {
-    border: solid #E9EEF2;
+    border: solid $NumberPadBorderColor;
     border-width: 0 1px 1px 1px;
     display: flex;
     margin: 0 auto;
@@ -64,20 +71,20 @@
       width: calc(100% / 3);
 
       &:not(.actionButtons-submit) {
-        background-color: #008E79;
+        background-color: $NumberPadActionButtonsBackgroundColor;
 
         &:active {
-          background-color: #008772;
+          background-color: $NumberPadActiveBackgroundColor;
         }
       }
       &:not(:last-child) {
-        border-right: 1px solid #E9EEF2;
+        border-right: 1px solid $NumberPadBorderColor;
       }
     }
   }
 
   .inputDisplay {
-    background-color: #E9EEF2;
+    background-color: $NumberPadBorderColor;
     overflow: hidden;
     padding: 1rem .5rem;
     text-align: center;

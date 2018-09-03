@@ -1,3 +1,4 @@
+const autoprefixer = require('autoprefixer')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const path = require('path')
 
@@ -5,7 +6,7 @@ const devMode = process.env.NODE_ENV !== 'production'
 
 module.exports = {
   entry: './src/index.jsx',
-  mode: devMode ? 'development' : 'production',
+  mode: 'production',
   module: {
     rules: [
       {
@@ -22,24 +23,27 @@ module.exports = {
         exclude: /(node_modules)/,
         use: [
           MiniCssExtractPlugin.loader,
-          'css-loader', // translates CSS into CommonJS
-          'sass-loader' // compiles Sass to CSS, using Node Sass by default
+          {
+            loader: 'css-loader',
+            options: {
+              minimize: true
+            }
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              ident: 'postcss',
+              plugins: [autoprefixer]
+            }
+          },
+          'sass-loader'
         ]
       }
     ]
   },
-  optimization: {
-    minimize: true
-  },
   output: {
     path: path.resolve(__dirname, 'dist/'),
     filename: 'bundle.js'
-  },
-  devServer: {
-    contentBase: path.join(__dirname, 'dist/'),
-    port: 3000,
-    publicPath: '/',
-    hotOnly: true
   },
   plugins: [
     new MiniCssExtractPlugin({

@@ -2,7 +2,8 @@ import type { NumberPadData } from './types'
 
 export const ACTION_TYPES = {
   ASYNC_REQUEST: 'ASYNC_REQUEST',
-  ASYNC_RESPONSE: 'ASYNC_RESPONSE'
+  ASYNC_RESPONSE: 'ASYNC_RESPONSE',
+  SET_QUERY: 'SET_QUERY'
 }
 
 export const NUMBER_PAD_DATA: NumberPadData = {

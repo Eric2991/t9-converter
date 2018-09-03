@@ -25,6 +25,11 @@ const converter = (
         loading: false,
         results: action.payload.results
       }
+    case ACTION_TYPES.SET_QUERY:
+      return {
+        ...state,
+        query: action.payload.query
+      }
     default:
       return state
   }

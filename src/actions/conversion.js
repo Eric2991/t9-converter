@@ -5,6 +5,11 @@ import { ACTION_TYPES } from '../shared/constants'
 
 require('es6-promise').polyfill()
 
+export const setQuery = (input: string) => ({
+  type: ACTION_TYPES.SET_QUERY,
+  payload: { query: input }
+})
+
 export const receiveConversion = (
   payload: Array<string>
 ): AsyncResponseAction => ({
@@ -19,7 +24,9 @@ const setConversionRequest = (input: string): AsyncRequestAction => ({
 
 export const requestConversion = (
   input: string
-): ((dispatch: Dispatch<*>) => Promise<Response>) => (
+): ((
+  dispatch: Dispatch<*>
+) => Promise<AsyncResponseAction | AsyncRequestAction>) => (
   dispatch: Dispatch<*>
 ) => {
   dispatch(setConversionRequest(input))

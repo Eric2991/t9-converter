@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import type { Dispatch } from 'redux'
-import { requestConversion } from '../../actions/conversion'
+import { requestConversion, setQuery } from '../../actions/conversion'
 import type {
   ConverterState,
   NumberPadData,
@@ -12,7 +12,8 @@ import { NUMBER_PAD_DATA } from '../../shared/constants'
 import './style.scss'
 
 type Props = {
-  convert: (input: string) => void
+  convert: (input: string) => void,
+  querySet: (input: string) => void
 }
 
 type State = {
@@ -75,7 +76,8 @@ class NumberInput extends React.Component<Props, State> {
   }
 
   handleClear = () => {
-    this.setState({ input: '' })
+    const { querySet } = this.props
+    this.setState({ input: '' }, () => querySet(''))
   }
 
   handleInputChange = (e: SyntheticEvent<HTMLButtonElement>) => {
@@ -125,7 +127,8 @@ const mapStateToProps = (state: { converter: ConverterState }) => ({
 })
 
 const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
-  convert: (input: string) => dispatch(requestConversion(input))
+  convert: (input: string) => dispatch(requestConversion(input)),
+  querySet: (input: string) => dispatch(setQuery(input))
 })
 
 export default connect(

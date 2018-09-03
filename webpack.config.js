@@ -1,11 +1,11 @@
-const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const path = require('path')
 
 const devMode = process.env.NODE_ENV !== 'production'
 
 module.exports = {
   entry: './src/index.jsx',
-  mode: 'development',
+  mode: devMode ? 'development' : 'production',
   module: {
     rules: [
       {
@@ -27,6 +27,9 @@ module.exports = {
         ]
       }
     ]
+  },
+  optimization: {
+    minimize: true
   },
   output: {
     path: path.resolve(__dirname, 'dist/'),

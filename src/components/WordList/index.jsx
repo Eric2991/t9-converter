@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import type { ConverterState } from '../../shared/types'
+import LoadingSpinner from '../../vendor/LoadingSpinner'
 import './style.scss'
 
 type Props = {
@@ -15,7 +16,7 @@ const WordList = (props: Props) => {
   const message = query.length ? resultsMessage : null
   return (
     <div className="WordList">
-      {loading ? <div>Loading!</div> : <div>{message}</div>}
+      {loading ? <LoadingSpinner /> : <div>{message}</div>}
     </div>
   )
 }

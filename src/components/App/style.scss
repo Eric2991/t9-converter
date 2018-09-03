@@ -4,7 +4,37 @@ html {
   font-family: 'Roboto', 'Helvetica Neue', sans-serif;
 }
 
+body {
+  margin: 0;
+}
+
 header {
   color: $FontColor;
   text-align: center;
+}
+
+.splashScreen {
+  background-color: rgba(255,255,255,1);
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  z-index: 100;
+
+  > div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  &.hidden {
+    animation: fadeAway 1.4s ease-in-out forwards;
+  }
+}
+
+@keyframes fadeAway {
+  0% { 
+    opacity: 1;
+  } 100% { 
+    opacity: 0;
+  }
 }

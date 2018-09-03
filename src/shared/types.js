@@ -22,3 +22,12 @@ export type AsyncResponseAction = {
 }
 
 export type Action = AsyncRequestAction | AsyncResponseAction
+
+export type NumberPadRowEntry = {
+  number: number, // The number to be displayed in the entry
+  subtext?: string // The subtext to be placed below the number. Can be textual or HTML Char code
+}
+export type NumberPadRow = Array<NumberPadRowEntry>
+export type NumberPadData = {
+  rows: Array<NumberPadRow>
+}

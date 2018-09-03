@@ -1,0 +1,94 @@
+$NumberPadWidth: 300px;
+$NumberPadBackgroundColor: #00A991;
+$NumberPadActiveBackgroundColor: #008772;
+$NumberPadBorderColor: #E9EEF2;
+$NumberPadTextColor: #fff;
+$NumberPadActionButtonsBackgroundColor: #008E79;
+
+.NumberPadButton {
+  align-items: center;
+  background-color: $NumberPadBackgroundColor;
+  border: none;
+  color: $NumberPadTextColor;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: calc(#{$NumberPadWidth} / 12) 0;
+  z-index: 10;
+
+  &:active {
+    background-color: $NumberPadActiveBackgroundColor;
+  }
+  &:focus {
+    outline: none;
+  }
+}
+
+.NumberInput {
+  margin: 0 auto;
+  max-width: $NumberPadWidth;
+
+  .numberPad {
+    border: 1px solid $NumberPadBorderColor;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+  }
+  .numberPadRow {
+    display: flex;
+    justify-content: space-around;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid $NumberPadBorderColor;
+    }
+  }
+  .numberPadRowEntry {
+    @extend .NumberPadButton;
+
+    &:not(:last-child) {
+      border-right: 1px solid $NumberPadBorderColor;
+    }
+    .numberPadRowEntry-main {
+      font-size: 1.5rem;
+    }
+    .numberPadRowEntry-subtext {
+      font-size: .9rem;
+    }
+  }
+
+  .actionButtons {
+    border: solid $NumberPadBorderColor;
+    border-width: 0 1px 1px 1px;
+    display: flex;
+    margin: 0 auto;
+
+    .actionButtons-submit {
+      font-size: 1.25rem;
+    }
+    button {
+      @extend .NumberPadButton;
+      font-size: 1rem;
+      width: calc(100% / 3);
+
+      &:not(.actionButtons-submit) {
+        background-color: $NumberPadActionButtonsBackgroundColor;
+
+        &:active {
+          background-color: $NumberPadActiveBackgroundColor;
+        }
+      }
+      &:not(:last-child) {
+        border-right: 1px solid $NumberPadBorderColor;
+      }
+    }
+  }
+
+  .inputDisplay {
+    background-color: $NumberPadBorderColor;
+    overflow: hidden;
+    padding: 1rem .5rem;
+    text-align: center;
+    text-overflow: ellipsis;
+  }
+}

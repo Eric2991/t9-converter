@@ -7,16 +7,19 @@ export type Node = {
   isWord: boolean
 }
 
-const createNode = (isWord: boolean = false) : Node => ({children: new Map(), isWord})
+const createNode = (isWord: boolean = false): Node => ({
+  children: new Map(),
+  isWord
+})
 
 const createEntry = (dictionary: Node, word: string) => {
   let node = dictionary
   for (let i = 0; i < word.length; i++) {
-    const letter = word[i];
-    let temp: ?Node = null;
+    const letter = word[i]
+    let temp: ?Node = null
 
     // Check for node
-    if (node === undefined) break;
+    if (node === undefined) break
 
     if (node.children.has(letter) && (temp = node.children.get(letter))) {
       // Check if we're at the end of the word
@@ -31,7 +34,7 @@ const createEntry = (dictionary: Node, word: string) => {
     } else {
       // Create new node
       const newNode: Node = createNode(i === word.length - 1)
-      
+
       // Insert the new node into the list of children
       node.children.set(letter, newNode)
 
@@ -42,19 +45,19 @@ const createEntry = (dictionary: Node, word: string) => {
 }
 
 const createDictionary = (): Promise<Node> => {
-  const readline = require('readline');
-  const fs = require('fs');
+  const readline = require('readline')
+  const fs = require('fs')
 
   const rl = readline.createInterface({
-    input: fs.createReadStream('dist/api/lib/dictionary.txt')
-  });
+    input: fs.createReadStream('assets/dictionary.txt')
+  })
 
   const dictionary = createNode()
 
   return new Promise((resolve, reject) => {
     rl.on('line', (word: string) => {
       createEntry(dictionary, word)
-    });
+    })
 
     rl.on('close', () => {
       resolve(dictionary)
@@ -62,4 +65,4 @@ const createDictionary = (): Promise<Node> => {
   })
 }
 
-module.exports = {dictionaryPromise: createDictionary()}
+module.exports = { dictionaryPromise: createDictionary() }

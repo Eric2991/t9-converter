@@ -32,14 +32,14 @@ type QueueItem = [Node, string]
 const createT9Map = (): Map<number, Array<string>> => {
   const result = new Map()
 
-  result.set(2, ['a','b','c'])
-  result.set(3, ['d','e','f'])
-  result.set(4, ['g','h','i'])
-  result.set(5, ['j','k','l'])
-  result.set(6, ['m','n','o'])
-  result.set(7, ['p','q','r','s'])
-  result.set(8, ['t','u','v'])
-  result.set(9, ['w','x','y','z'])
+  result.set(2, ['a', 'b', 'c'])
+  result.set(3, ['d', 'e', 'f'])
+  result.set(4, ['g', 'h', 'i'])
+  result.set(5, ['j', 'k', 'l'])
+  result.set(6, ['m', 'n', 'o'])
+  result.set(7, ['p', 'q', 'r', 's'])
+  result.set(8, ['t', 'u', 'v'])
+  result.set(9, ['w', 'x', 'y', 'z'])
 
   return result
 }
@@ -53,7 +53,7 @@ async function retrieveWords(input: string) {
   await dictionaryPromise.then((dictionary: Node) => {
     queue.push([dictionary, ''])
 
-    for(let i = 0; !queue.isEmpty() && i < input.length; i++) {
+    for (let i = 0; !queue.isEmpty() && i < input.length; i++) {
       const number = parseInt(input[i])
       const letters: Array<string> = T9_MAP.get(number) || []
 
@@ -81,11 +81,11 @@ async function retrieveWords(input: string) {
     const curr: QueueItem = queue.pop()
     const node: Node = curr[0]
     const word: string = curr[1]
-    
+
     if (node.isWord) result.push(curr[1])
   }
 
   return result
 }
 
-module.exports = {retrieveWords}
+module.exports = { retrieveWords }

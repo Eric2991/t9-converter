@@ -11,7 +11,7 @@ import type {
 import { NUMBER_PAD_DATA } from '../../shared/constants'
 import './style.scss'
 
-type Props = {
+export type Props = {
   convert: (input: string) => void,
   querySet: (input: string) => void
 }
@@ -57,7 +57,7 @@ const renderPad = (
   </div>
 )
 
-class NumberInput extends React.Component<Props, State> {
+export class NumberInput extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props)
 

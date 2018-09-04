@@ -1,9 +1,23 @@
 {
-  "plugins": ["transform-object-rest-spread",
-    ["transform-runtime", {
-      "polyfill": false,
-      "regenerator": true
-    }]
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "root": ["./src"],
+        "alias": {
+          "test": "./test"
+        }
+      }
+    ],
+    "transform-class-properties",
+    "transform-object-rest-spread",
+    [
+      "transform-runtime",
+      {
+        "polyfill": false,
+        "regenerator": true
+      }
+    ]
   ],
   "presets": ["flow", "env", "react"]
 }

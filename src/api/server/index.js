@@ -1,4 +1,4 @@
-const api = require(`../src/index.js`)
+const api = require(`../src/t9_conversion`)
 const express = require('express')
 const path = require('path')
 

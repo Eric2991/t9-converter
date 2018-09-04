@@ -1,9 +1,6 @@
-// @flow
 import type { Node } from './dictionary_creator'
 
 const dictLib = require('./dictionary_creator')
-
-const { dictionaryPromise } = dictLib
 
 type QueueItem = [Node, string]
 class Queue {
@@ -47,11 +44,14 @@ const createT9Map = (): Map<number, Array<string>> => {
 
 const T9_MAP: Map<number, Array<string>> = createT9Map()
 
-async function retrieveWords(input: string): Promise<Array<string>> {
+const retrieveWordsInternal = async (
+  input: string,
+  dictPromise: Promise<Node>
+): Promise<Array<string>> => {
   const result: Array<string> = []
   const queue: Queue = new Queue()
 
-  await dictionaryPromise.then((dictionary: Node) => {
+  await dictPromise.then((dictionary: Node) => {
     queue.push([dictionary, ''])
 
     for (let i = 0; !queue.isEmpty() && i < input.length; i++) {
@@ -89,4 +89,12 @@ async function retrieveWords(input: string): Promise<Array<string>> {
   return result
 }
 
-module.exports = { retrieveWords }
+const retrieveWords = (input: string): Promise<Array<string>> => {
+  const { dictionaryPromise } = dictLib
+  return retrieveWordsInternal(input, dictionaryPromise)
+}
+
+module.exports = {
+  retrieveWords,
+  retrieveWordsInternal
+}

@@ -6,6 +6,8 @@ export type Node = {
   isWord: boolean
 }
 
+const pathToDictionary = 'assets/dictionary.txt'
+
 const createNode = (isWord: boolean = false): Node => ({
   children: new Map(),
   isWord
@@ -43,9 +45,9 @@ const createEntry = (dictionary: Node, word: string) => {
   }
 }
 
-const createDictionary = (): Promise<Node> => {
+const createDictionary = (dictionaryPath: string): Promise<Node> => {
   const rl = readline.createInterface({
-    input: fs.createReadStream('assets/dictionary.txt')
+    input: fs.createReadStream(dictionaryPath)
   })
 
   const dictionary = createNode()
@@ -61,4 +63,9 @@ const createDictionary = (): Promise<Node> => {
   })
 }
 
-module.exports = { dictionaryPromise: createDictionary() }
+module.exports = {
+  createDictionary,
+  createEntry,
+  createNode,
+  dictionaryPromise: createDictionary(pathToDictionary)
+}

@@ -22,7 +22,15 @@ export type AsyncResponseAction = {
   payload: ConversionResponsePayload
 }
 
-export type Action = AsyncRequestAction | AsyncResponseAction
+export type GenericRequestAction = {
+  type: 'SET_QUERY',
+  payload: ConversionRequestPayload
+}
+
+export type Action =
+  | AsyncRequestAction
+  | AsyncResponseAction
+  | GenericRequestAction
 
 export type NumberPadRowEntry = {
   number: number, // The number to be displayed in the entry

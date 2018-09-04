@@ -1,5 +1,12 @@
 {
-  "plugins": ["transform-object-rest-spread",
+  "plugins": [
+    ["module-resolver", {
+      "root": ["./src"],
+      "alias": {
+        "test": "./test"
+      }
+    }],
+    "transform-object-rest-spread",
     ["transform-runtime", {
       "polyfill": false,
       "regenerator": true

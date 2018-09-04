@@ -1,6 +1,8 @@
 {
   "env": {
     "browser": true,
+    "jest": true,
+    "mocha": true,
     "node": true
   },
   "extends": ["airbnb", "plugin:prettier/recommended", "plugin:react/recommended"],
@@ -69,6 +71,9 @@
   "settings": {
     "flowtype": {
       "onlyFilesWithFlowAnnotation": false
+    },
+    "import/resolver": {
+      "babel-module": {}
     }
   }
 }

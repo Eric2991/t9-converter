@@ -72,7 +72,9 @@ export class NumberInput extends React.Component<Props, State> {
 
   handleBackspace = () => {
     const { input } = this.state
-    if (input.length) this.setState({ input: input.slice(0, -1) })
+
+    if (input.length === 1) this.handleClear()
+    else if (input.length) this.setState({ input: input.slice(0, -1) })
   }
 
   handleClear = () => {
@@ -89,9 +91,8 @@ export class NumberInput extends React.Component<Props, State> {
   handleSubmit = () => {
     const { convert } = this.props
     const { input } = this.state
-    if (input.length) {
-      convert(input)
-    }
+
+    input.length && convert(input)
   }
 
   render() {

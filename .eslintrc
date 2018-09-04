@@ -13,6 +13,7 @@
   "rules": {
     "no-cond-assign": [2, "except-parens"],
     "no-plusplus": [2, {"allowForLoopAfterthoughts": true}],
+    "no-unused-expressions": [2, {"allowShortCircuit": true }],
     "react/no-array-index-key": 0,
     "react/prop-types": 0,
     "react/require-default-props": 0,

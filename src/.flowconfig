@@ -1,5 +1,6 @@
 [ignore]
 .*/api/server/.*
+.*\.test\.js
 
 [include]
 

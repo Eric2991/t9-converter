@@ -59,9 +59,7 @@
     "prettier": "prettier -l src/**/*.js",
     "postinstall": "cd src/ && flow-typed install --ignoreDeps dev; cd ..",
     "start": "yarn build && node dist/api/server/index.js",
-    "test": "yarn run test:api && yarn run test:ui",
-    "test:api": "yarn run build:api && yarn run build:tests && mocha --require babel-polyfill --require babel-register lib/**/*.test.js",
-    "test:ui": "jest"
+    "test": "yarn run build:api && yarn run build:tests && jest lib/"
   },
   "dependencies": {
     "classnames": "^2.2.6",

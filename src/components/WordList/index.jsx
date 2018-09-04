@@ -4,13 +4,13 @@ import type { ConverterState } from '../../shared/types'
 import LoadingSpinner from '../../vendor/LoadingSpinner'
 import './style.scss'
 
-type Props = {
+export type Props = {
   loading: boolean,
   query: string,
   words: Array<string>
 }
 
-const WordList = (props: Props) => {
+export const WordList = (props: Props) => {
   const { loading, query, words } = props
   const resultsMessage = words.length ? words.join(', ') : 'No words found :('
   const message = query.length ? resultsMessage : null

@@ -16,6 +16,15 @@ Once the server starts up (indicated in the terminal by the logged message `SERV
 http://localhost:3000/
 ```
 
+### Flags
+The API itself is pretty fast and thus results come in quickly to the UI - which is great! But if you want to simulate a delay before receiving a response from the API, I've also added a `--delay` flag to the server script.
+
+Thus, if you want to simulate a delay on the API side, run the following command:
+```
+yarn start --delay <delayDuration>
+```
+where `<delayDuration>` is a duration of time specified in milliseconds.
+
 The API and the UI are both being served through port 3000.
 
 ## Project Structure

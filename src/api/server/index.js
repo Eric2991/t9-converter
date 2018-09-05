@@ -4,7 +4,7 @@ const path = require('path')
 
 const app = express()
 
-app.use('/dist', express.static(path.join(process.cwd(), 'dist')))
+app.use('/dist', express.static(path.join(process.cwd(), 'public/dist')))
 
 app.get('/', (req: express$Request, res: express$Response) => {
   res.sendFile(path.join(process.cwd(), '/public/index.html'))

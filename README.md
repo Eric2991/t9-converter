@@ -2,6 +2,8 @@
 For the sole submission and review for the [Kiwi.com](https://www.kiwi.com/) practical task.
 
 ## Summary
+This T9-Conversion project provides a phone-like number pad in the UI that, given an input by the user, will display all the different possible combinations in the T9 format. All combinations displayed are valid entries found in the English dictionary that can be found in `assets/dictionary.txt`.
+
 This project was built using a [React](https://reactjs.org/)-[Redux](https://redux.js.org/) front-end and served on an [Express](https://expressjs.com/) backend that also serves the API for the project. Source files are type-checked using [Flow](https://flow.org/) and linted using [ESLint](https://eslint.org/) and [Prettier](https://prettier.io/). Unit tests are provided and are executed using [Jest](https://jestjs.io/) and [Enzyme](https://airbnb.io/enzyme/).
 
 ## Getting Started

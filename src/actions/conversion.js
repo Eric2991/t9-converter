@@ -23,14 +23,19 @@ const setConversionRequest = (input: string): AsyncRequestAction => ({
 })
 
 export const requestConversion = (
-  input: string
+  input: string,
+  testing: boolean = false
 ): ((
   dispatch: Dispatch<*>
 ) => Promise<AsyncResponseAction | AsyncRequestAction>) => (
   dispatch: Dispatch<*>
 ) => {
   dispatch(setConversionRequest(input))
-  return fetch(`/api/convert/${input}`)
+  const relativeUrl = `/api/convert/${input}`
+  const urlToFetch = testing
+    ? `${window.location.origin}:3000${relativeUrl}`
+    : relativeUrl
+  return fetch(urlToFetch)
     .then((response: Response) => {
       if (response.status >= 400) {
         throw new Error('Bad response from server')

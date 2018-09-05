@@ -38,4 +38,10 @@ app.get(
   }
 )
 
-app.listen(3000, () => console.log('SERVER TURNED ON PORT 3000'))
+const server: Server = app.listen(3000, () =>
+  console.log('SERVER TURNED ON PORT 3000')
+)
+
+process.once('SIGTERM', () => {
+  server.close()
+})

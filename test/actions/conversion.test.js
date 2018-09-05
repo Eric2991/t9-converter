@@ -1,10 +1,12 @@
 import * as actions from 'actions/conversion'
 import { ACTION_TYPES } from 'shared/constants'
-import type { AsyncRequestAction, AsyncResponseAction } from 'shared/types'
+import type { AsyncResponseAction, ConverterState } from 'shared/types'
+import configureMockStore from 'redux-mock-store'
+import fetchMock from 'fetch-mock'
+import thunk from 'redux-thunk'
 
-const mockFetch = (results: Array<string>) => {
-  jest.fn().mockImplementation(() => Promise.resolve(results))
-}
+const middlewares = [thunk]
+const mockStore = configureMockStore(middlewares)
 
 describe('actions', () => {
   describe('setQuery', () => {
@@ -35,7 +37,31 @@ describe('actions', () => {
     })
   })
 
-  // TO-DO: Implement Jest tests for requestConversion
-  // describe('requestConversion', () => {
-  // })
+  describe('requestConversion', () => {
+    afterEach(() => {
+      fetchMock.reset()
+      fetchMock.restore()
+    })
+
+    it('returns an AsyncRequestAction and an AsyncRequestResponse once fetching is completed', () => {
+      const query: string = '3354'
+
+      fetchMock.getOnce(`express:/api/convert/:digits`, 200)
+
+      const expectedActions = [
+        { type: ACTION_TYPES.ASYNC_REQUEST, payload: { query } },
+        { type: ACTION_TYPES.ASYNC_RESPONSE, payload: { results: ['deli'] } }
+      ]
+      const initialConverterState: ConverterState = {
+        loading: false,
+        query: '',
+        results: []
+      }
+      const store = mockStore({ converter: initialConverterState })
+
+      return store.dispatch(actions.requestConversion(query, true)).then(() => {
+        expect(store.getActions()).toEqual(expectedActions)
+      })
+    })
+  })
 })
